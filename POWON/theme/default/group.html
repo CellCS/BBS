@@ -1,0 +1,116 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--CONTENT start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><!--{if $Glist==0}-->All Groups<!--{else}-->My Groups<!--{/if}-->
+        </div>
+        <div class="z"></div>
+    </div>
+
+        <div class="mn">
+            </div>
+            <div class="fl bm">
+                <!--group start-->
+                <div class="bm bmw  cl">
+                    <div class="bm_h cl">
+                        <table cellspacing="0" cellpadding="0">
+                            <th>
+                                <!--{if $Glist==0}-->
+                                <h2><a>All Groups</a></h2>
+                                <!--{else}-->
+                                <h2><a>My Groups</a></h2>
+                                <!--{/if}-->
+                            </th>
+
+                            <td><span class="pipe">|</span></td>
+                            <!--{if $Cat==0}-->
+                            <td float="right">
+                                <h2><a href="group.php?glist=<!--{if $Glist==0}-->0<!--{else}-->1<!--{/if}-->&cat=1">Order by interest</a></h2>
+                            </td>
+                            <!--{else}-->
+                            <td float="right">
+                                <h2><a href="group.php?glist=<!--{if $Glist==0}-->0<!--{else}-->1<!--{/if}-->&cat=0">Order by default</a></h2>
+                            </td>
+                            <!--{/if}-->
+                            <td><span class="pipe">|</span></td>
+                            <td class="common" style="text-align: right">
+                                <h3><a href="group_reg.php" style="color: rgba(159, 27, 5, 0.94);">Create Group</a></h3>
+                            </td>
+
+                        </table>
+                    </div>
+                    <div id="category_1" class="bm_c">
+                        <table cellspacing="0" cellpadding="0" class="fl_tb">
+                            <!--{if $Cat==0}-->
+                            <!--{loop $GrMenu $key $val}-->
+                            <!--{if $key%4==0 and $key!=0}--><tr> </tr><!--{/if}-->
+                            <td style="width:60px;height:80px;text-align: center;" >
+                                <a href="group_info.php?gid={$val['gid']}"><img src="{$val['grouppic']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="{$val['name']}" /></a>
+                            </td>
+                            <td>
+                                <h2><a href="group_info.php?gid={$val['gid']}" style="color:{$val['namestyle']}">{$val['name']}</a></h2>
+                                <p class="xg2">{$val['description']}</p>
+                                <p>Owner: <span class="xi2">${getUserName($val['owner'])}</span></p>
+                            </td>
+                            <!--{/loop}-->
+                            <!--{else}-->
+                            <?php
+                            $descriptionTmp=null;
+                            $tdnum = 0;
+                                ?>
+                            <!--{loop $GrMenu $key $val}-->
+                            <!--{if strMagic($val['description']) != $descriptionTmp}-->
+                            <tr>
+                            <th colspan="8"><b><font color="#00008b"><!--{if !empty($val['description'])}-->${strMagic($val['description'])}<!--{else}-->Unknown<!--{/if}--></font></b></th>
+                            </tr>
+                            <tr>
+                                <?php $tdnum=0 ?>
+                            <!--{/if}-->
+                            <td style="width:60px;height:80px;text-align: center;">
+                                <a href="group_info.php?gid={$val['gid']}"><img src="{$val['grouppic']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="{$val['name']}" /></a>
+                            </td>
+                            <td>
+                                 <h2><a href="group_info.php?gid={$val['gid']}" style="color:{$val['namestyle']}">{$val['name']}</a></h2>
+                                <p class="xg2">{$val['description']}</p>
+                                <p>Owner: <span class="xi2">${getUserName($val['owner'])}</span></p>
+                             </td>
+                             <?php
+                            $tdnum+=2;
+                            $descriptionTmp = strMagic($val['description']);
+                                ?>
+                             <!--{if $tdnum == 8}-->
+                              </tr>
+                              <tr>
+                              <?php $tdnum=0 ?>
+                            <!--{/if}-->
+                            <!--{/loop}-->
+                            <!--{if $tdnum != 8}-->
+                            </tr>
+                            <!--{/if}-->
+                            <!--{/if}-->
+                        </table>
+                    </div>
+                </div>
+                <!--group end-->
+            </div>
+
+
+        </div>
+</div>
+<!--CONTENT end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+

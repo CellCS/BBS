@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$title}</title>
+		<link rel="stylesheet" type="text/css" href="{$domain_resource}/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="{$domain_resource}/css/search.css" />
+	</head>
+
+<body>
+	<div id="toptb" class="cl">
+		<div class="z">
+			<a href="./" class="showmenu xi2">Back to home page</a>
+		</div>
+		<div class="y">
+			<!--{if $_COOKIE['uid']}-->
+			<strong><a href="#" target="_blank">{$_COOKIE['username']}</a></strong>
+			<a href="#">User Page</a>
+			<a href="loginout.php">Exit</a>
+			<!--{else}-->
+			<a href="index.php">Login</a>
+			<a href="reg.php">Register</a>
+			<!--{/if}-->
+		</div>
+	</div>
+
+	<div id="ct" class="cl w">
+		<div class="mw">
+			<form class="searchform" method="get" autocomplete="off" action="search.php">
+			<table id="scform" class="mbm" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						<table id="scform_form" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="td_srchtxt">
+									<input type="text" id="scform_srchtxt" name="keywords" size="45" maxlength="40" value="{$key}" tabindex="1" />
+								</td>
+								<td class="td_srchbtn">
+									<button type="submit" id="scform_submit" class="schbtn"><strong>Search</strong></button>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			</form>
+		
+			<div class="tl">
+				<!--{if $uSearch or $gSearch}-->
+				<div class="slst mtw" id="threadlist"  style="position: relative;">
+					<ul>
+						<b><font color="#00008b">Members</font></b>
+						<!--{loop $uSearch $key $val}-->
+						<li class="pbw" id="2">
+							<a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+							<h2><p><span class="xi2">{$val['username']}</span></p></h2>
+						</li>
+						<!--{/loop}-->
+					</ul>
+					<ul>
+						<b><font color="#00008b">Groups</font></b>
+						<!--{loop $gSearch $key $val}-->
+						<li class="pbw" id="3">
+							<p>
+								<h2><a href="group_postlist.php?gid={$val['gid']}">{$val['name']}</a></h2>
+								<p class="xg2">Description: {$val['description']}</p>
+								<p>Owner: <span class="xi2">${getUserName($val['owner'])}</span></p>
+							</p>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+				<!--{else}-->
+				<p class="emp xs2 xg2">Sorry, could not find any related member or group</p>
+				<!--{/if}-->
+			</div>
+		</div>
+	</div>
+
+	<div id="ft" class="w cl">
+		<em>Powered by <strong><a href="{$web_url}" target="_blank">{$web_btm}</a></strong> <em>V2</em></em> &nbsp;
+		<em>&copy; 2016 <a href="{$web_url}" target="_blank">{$web_btm} Inc.</a></em>
+	</div>
+</body>
+</html>

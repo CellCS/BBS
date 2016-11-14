@@ -1,0 +1,132 @@
+<?php include template("header.html");?>
+<!--TOP start-->
+<?php include template("top.html");?>
+<!--TOP end-->
+
+
+<!--CONTENT start-->
+<script src="/POWON/public/js/moment.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="mn">
+</div>
+<div class="fl bm">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Mail <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Mail</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <form action="mailbox_emaildetail.php" method="post" autocomplete="off" name="moderate" id="moderate" >
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh" value="Reload Window" onclick="window.location.reload()">
+                       <span class="glyphicon glyphicon-refresh"></span>   </button>
+                <button  class="btn btn-default" type="submit" name="replysubmit" id="replysubmit" value="replysubmit" tabindex="5">
+                    Reply
+                </button>
+                <button class="btn btn-default" type="submit" name="deletesubmit" id="deletesubmit" value="deletesubmit" tabindex="5">
+                    Delete
+                </button>
+                <div class="pull-right">
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </button>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                    </div>
+                </div>
+                <input name="mailid" type="hidden" value="<?php echo $result['mailid']; ?>" />
+            </form>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <a href="mailbox_compose.php" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
+            <hr />
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="mailbox.php"><span class="badge pull-right"><?php echo $unread; ?></span> Inbox </a>
+                </li>
+                <li><a href="mailbox_sentmail.php">Sent Mail</a></li>
+                <li><a href=#"><span class="badge pull-right"></span>Drafts</a></li>
+            </ul>
+            <a href="#" class="btn btn-success btn-sm btn-block" role="button">Send Gift</a>
+        </div>
+        <div class="col-sm-9 col-md-10">
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <link rel="stylesheet" type="text/css" href="<?php echo $domain_resource; ?>/css/post.css" />
+                <!--LIST start-->
+                <div id="wp" class="wp">
+                        <div id="ct" class="ct2_a ct2_a_r wp cl">
+                            <div class="mn">
+                                <div class="bm bw0 cl" id="editorbox">
+
+                                    <div id="postbox">
+                                        <div class="pbt cl">
+                                            <div class="z">
+                                                <?php if($sender['username']== $user['username']){?>
+                                                <span>To <span style="padding: 0 5px"></span> <?php echo $receiver['username']; ?></span>
+                                                <?php } else { ?>
+                                                <span>From <span style="padding: 0 5px"></span> <?php echo $sender['username']; ?></span>
+                                                <?php }?>
+                                            </div> </br></br>
+                                            <div class="z">
+                                                <span><h4><?php echo $result['title']; ?></h4></span>
+                                            </div>
+                                        </div>
+
+                                        <div id="e_body_loading">
+                                            <?php if($result['content']== "public/images/treasure-chest.gif" ){?>
+                                                <img src="public/images/treasure-chest.gif" alt="treasure chest" style="width:400px;height:400px;">
+                                            <?php } else { ?>
+                                            <div style="width:810px;height:400px;border:1px solid #000;">
+                                               <span style="padding: 0 5px"></span> <?php echo $result['content']; ?>
+                                            </div>
+                                            <?php }?>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<!--CONTENT end-->
+
+<!--FOOT start-->
+<?php include template("footer.html");?>
+<!--FOOT end-->
+</body>
+</html>
+

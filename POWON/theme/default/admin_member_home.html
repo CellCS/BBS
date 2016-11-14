@@ -1,0 +1,226 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--LIST start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><a href="admin_member_list.php">Admin Center</a><em>&raquo;</em><a href="admin_member_list.php">Member List</a><em>&raquo;</em><a>{$result[0]['username']}</a>
+        </div>
+    </div>
+    <div class="boardnav">
+        <div id="ct" class="wp cl" style="margin-left:145px">
+            <div id="sd_bdl" class="bdl" style="width:130px;margin-left:-145px">
+                <div class="tbn" id="forumleftside"><h2 class="bdl_h">Menue</h2>
+                    <dl class="a" id="lf_group">
+                        <dt><a href="javascript:;" title="Posts">Members</a></dt>
+                        <dd class="bdl_a">
+                            <a href="admin_member_list.php" title="Post List">Member List</a>
+                        </dd>
+                    </dl>
+                    <dl class="a" id="lf_member">
+                        <dt><a href="javascript:;" title="Members">Groups</a></dt>
+                        <dd>
+                            <a href="admin_group_list.php" title="Member List">Group List</a>
+                        </dd>
+                    </dl>
+                    <dl class="a" id="lf_member">
+                        <dt><a href="javascript:;" title="Members">Public Post</a></dt>
+                        <dd>
+                            <a href="admin_postlist.php" title="Member List">Public Post List</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mn" style="margin-left:15px;">
+                <div class="bm bw0">
+                    <form action="admin_member_home.php" method="post" autocomplete="off">
+                        <table cellspacing="0" cellpadding="0" class="tfm" id="profilelist">
+                            <tr>
+                                <th>username</th>
+                                <td>{$result[0]['username']}</td>
+                                <td>&nbsp</td>
+                                <td>&nbsp </td>
+                            </tr>
+                            <tr id="tr_firstname">
+                                <th id="tr_firstname">First Name</th>
+                                <td id="tr_firstname">
+                                    <input type="text" name="firstname" class="px" value="{$result[0]['firstname']}" />
+                                </td>
+                            </tr>
+                            <tr id="tr_lastname">
+                                <th id="tr_lastname">Last Name</th>
+                                <td id="tr_lastname">
+                                    <input type="text" name="lastname" class="px" value="{$result[0]['lastname']}" />
+                                </td>
+                            </tr>
+                            <tr id="tr_gender">
+                                <th id="th_gender">Gender</th>
+                                <td id="td_gender">
+                                    <select name="sex" id="sex" class="ps">
+                                        <option value="0" <!--{if $result[0]['sex']==0}-->selected="selected"<!--{/if}-->>secret</option>
+                                        <option value="1" <!--{if $result[0]['sex']==1}-->selected="selected"<!--{/if}-->>femal</option>
+                                        <option value="2" <!--{if $result[0]['sex']==2}-->selected="selected"<!--{/if}-->>male</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="tr_birthday">
+                                <th id="th_birthday">Birthday</th>
+                                <td id="td_birthday">
+                                    <select name="birthyear" id="birthyear" class="ps" onchange="showbirthday();">
+                                        <option value="2016"<!--{if $yBirthday == 2016}-->selected="selected"<!--{/if}-->>2016</option>
+                                        <option value="2015"<!--{if $yBirthday == 2015}-->selected="selected"<!--{/if}-->>2015</option>
+                                        <option value="2014"<!--{if $yBirthday == 2014}-->selected="selected"<!--{/if}-->>2014</option>
+                                        <option value="2013"<!--{if $yBirthday == 2013}-->selected="selected"<!--{/if}-->>2013</option>
+                                        <option value="2012"<!--{if $yBirthday == 2012}-->selected="selected"<!--{/if}-->>2012</option>
+                                        <option value="2011"<!--{if $yBirthday == 2011}-->selected="selected"<!--{/if}-->>2011</option>
+                                        <option value="2010"<!--{if $yBirthday == 2010}-->selected="selected"<!--{/if}-->>2010</option>
+                                        <option value="2009"<!--{if $yBirthday == 2009}-->selected="selected"<!--{/if}-->>2009</option>
+                                        <option value="2008"<!--{if $yBirthday == 2008}-->selected="selected"<!--{/if}-->>2008</option>
+                                        <option value="2007"<!--{if $yBirthday == 2007}-->selected="selected"<!--{/if}-->>2007</option>
+                                        <option value="2006"<!--{if $yBirthday == 2006}-->selected="selected"<!--{/if}-->>2006</option>
+                                        <option value="2005"<!--{if $yBirthday == 2005}-->selected="selected"<!--{/if}-->>2005</option>
+                                        <option value="2004"<!--{if $yBirthday == 2004}-->selected="selected"<!--{/if}-->>2004</option>
+                                        <option value="2003"<!--{if $yBirthday == 2003}-->selected="selected"<!--{/if}-->>2003</option>
+                                        <option value="2002"<!--{if $yBirthday == 2002}-->selected="selected"<!--{/if}-->>2002</option>
+                                        <option value="2001"<!--{if $yBirthday == 2001}-->selected="selected"<!--{/if}-->>2001</option>
+                                        <option value="2000"<!--{if $yBirthday == 2000}-->selected="selected"<!--{/if}-->>2000</option>
+                                        <option value="1999"<!--{if $yBirthday == 1999}-->selected="selected"<!--{/if}-->>1999</option>
+                                        <option value="1998"<!--{if $yBirthday == 1998}-->selected="selected"<!--{/if}-->>1998</option>
+                                        <option value="1997"<!--{if $yBirthday == 1997}-->selected="selected"<!--{/if}-->>1997</option>
+                                        <option value="1996"<!--{if $yBirthday == 1996}-->selected="selected"<!--{/if}-->>1996</option>
+                                        <option value="1995"<!--{if $yBirthday == 1995}-->selected="selected"<!--{/if}-->>1995</option>
+                                        <option value="1994"<!--{if $yBirthday == 1994}-->selected="selected"<!--{/if}-->>1994</option>
+                                        <option value="1993"<!--{if $yBirthday == 1993}-->selected="selected"<!--{/if}-->>1993</option>
+                                        <option value="1992"<!--{if $yBirthday == 1992}-->selected="selected"<!--{/if}-->>1992</option>
+                                        <option value="1991"<!--{if $yBirthday == 1991}-->selected="selected"<!--{/if}-->>1991</option>
+                                        <option value="1990"<!--{if $yBirthday == 1990}-->selected="selected"<!--{/if}-->>1990</option>
+                                        <option value="1989"<!--{if $yBirthday == 1989}-->selected="selected"<!--{/if}-->>1989</option>
+                                        <option value="1988"<!--{if $yBirthday == 1988}-->selected="selected"<!--{/if}-->>1988</option>
+                                        <option value="1987"<!--{if $yBirthday == 1987}-->selected="selected"<!--{/if}-->>1987</option>
+                                        <option value="1986"<!--{if $yBirthday == 1986}-->selected="selected"<!--{/if}-->>1986</option>
+                                        <option value="1985"<!--{if $yBirthday == 1985}-->selected="selected"<!--{/if}-->>1985</option>
+                                        <option value="1984"<!--{if $yBirthday == 1984}-->selected="selected"<!--{/if}-->>1984</option>
+                                        <option value="1983"<!--{if $yBirthday == 1983}-->selected="selected"<!--{/if}-->>1983</option>
+                                        <option value="1982"<!--{if $yBirthday == 1982}-->selected="selected"<!--{/if}-->>1982</option>
+                                        <option value="1981"<!--{if $yBirthday == 1981}-->selected="selected"<!--{/if}-->>1981</option>
+                                        <option value="1980"<!--{if $yBirthday == 1980}-->selected="selected"<!--{/if}-->>1980</option>
+                                        <option value="1979"<!--{if $yBirthday == 1979}-->selected="selected"<!--{/if}-->>1979</option>
+                                    </select>&nbsp;
+                                    <select name="birthmonth" id="birthmonth" class="ps">
+                                        <option value="1"<!--{if $mBirthday == 1}-->selected="selected"<!--{/if}-->>1</option>
+                                        <option value="2"<!--{if $mBirthday == 2}-->selected="selected"<!--{/if}-->>2</option>
+                                        <option value="3"<!--{if $mBirthday == 3}-->selected="selected"<!--{/if}-->>3</option>
+                                        <option value="4"<!--{if $mBirthday == 4}-->selected="selected"<!--{/if}-->>4</option>
+                                        <option value="5"<!--{if $mBirthday == 5}-->selected="selected"<!--{/if}-->>5</option>
+                                        <option value="6"<!--{if $mBirthday == 6}-->selected="selected"<!--{/if}-->>6</option>
+                                        <option value="7"<!--{if $mBirthday == 7}-->selected="selected"<!--{/if}-->>7</option>
+                                        <option value="8"<!--{if $mBirthday == 8}-->selected="selected"<!--{/if}-->>8</option>
+                                        <option value="9"<!--{if $mBirthday == 9}-->selected="selected"<!--{/if}-->>9</option>
+                                        <option value="10"<!--{if $mBirthday == 10}-->selected="selected"<!--{/if}-->>10</option>
+                                        <option value="11"<!--{if $mBirthday == 11}-->selected="selected"<!--{/if}-->>11</option>
+                                        <option value="12"<!--{if $mBirthday == 12}-->selected="selected"<!--{/if}-->>12</option>
+                                    </select>&nbsp;
+                                    <select name="birthday" id="birthday" class="ps">
+                                        <option value="1"<!--{if $dBirthday == 1}-->selected="selected"<!--{/if}-->>1</option>
+                                        <option value="2"<!--{if $dBirthday == 2}-->selected="selected"<!--{/if}-->>2</option>
+                                        <option value="3"<!--{if $dBirthday == 3}-->selected="selected"<!--{/if}-->>3</option>
+                                        <option value="4"<!--{if $dBirthday == 4}-->selected="selected"<!--{/if}-->>4</option>
+                                        <option value="5"<!--{if $dBirthday == 5}-->selected="selected"<!--{/if}-->>5</option>
+                                        <option value="6"<!--{if $dBirthday == 6}-->selected="selected"<!--{/if}-->>6</option>
+                                        <option value="7"<!--{if $dBirthday == 7}-->selected="selected"<!--{/if}-->>7</option>
+                                        <option value="8"<!--{if $dBirthday == 8}-->selected="selected"<!--{/if}-->>8</option>
+                                        <option value="9"<!--{if $dBirthday == 9}-->selected="selected"<!--{/if}-->>9</option>
+                                        <option value="10"<!--{if $dBirthday == 10}-->selected="selected"<!--{/if}-->>10</option>
+                                        <option value="11"<!--{if $dBirthday == 11}-->selected="selected"<!--{/if}-->>11</option>
+                                        <option value="12"<!--{if $dBirthday == 12}-->selected="selected"<!--{/if}-->>12</option>
+                                        <option value="13"<!--{if $dBirthday == 13}-->selected="selected"<!--{/if}-->>13</option>
+                                        <option value="14"<!--{if $dBirthday == 14}-->selected="selected"<!--{/if}-->>14</option>
+                                        <option value="15"<!--{if $dBirthday == 15}-->selected="selected"<!--{/if}-->>15</option>
+                                        <option value="16"<!--{if $dBirthday == 16}-->selected="selected"<!--{/if}-->>16</option>
+                                        <option value="17"<!--{if $dBirthday == 17}-->selected="selected"<!--{/if}-->>17</option>
+                                        <option value="18"<!--{if $dBirthday == 18}-->selected="selected"<!--{/if}-->>18</option>
+                                        <option value="19"<!--{if $dBirthday == 19}-->selected="selected"<!--{/if}-->>19</option>
+                                        <option value="20"<!--{if $dBirthday == 20}-->selected="selected"<!--{/if}-->>20</option>
+                                        <option value="21"<!--{if $dBirthday == 21}-->selected="selected"<!--{/if}-->>21</option>
+                                        <option value="22"<!--{if $dBirthday == 22}-->selected="selected"<!--{/if}-->>22</option>
+                                        <option value="23"<!--{if $dBirthday == 23}-->selected="selected"<!--{/if}-->>23</option>
+                                        <option value="24"<!--{if $dBirthday == 24}-->selected="selected"<!--{/if}-->>24</option>
+                                        <option value="25"<!--{if $dBirthday == 25}-->selected="selected"<!--{/if}-->>25</option>
+                                        <option value="26"<!--{if $dBirthday == 26}-->selected="selected"<!--{/if}-->>26</option>
+                                        <option value="27"<!--{if $dBirthday == 27}-->selected="selected"<!--{/if}-->>27</option>
+                                        <option value="28"<!--{if $dBirthday == 28}-->selected="selected"<!--{/if}-->>28</option>
+                                        <option value="29"<!--{if $dBirthday == 29}-->selected="selected"<!--{/if}-->>29</option>
+                                        <option value="30"<!--{if $dBirthday == 30}-->selected="selected"<!--{/if}-->>30</option>
+                                        <option value="31"<!--{if $dBirthday == 31}-->selected="selected"<!--{/if}-->>31</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="tr_profession">
+                                <th id="th_profession">Profession</th>
+                                <td id="td_profession">
+                                    <input type="text" name="profession" class="px" value="{$result[0]['profession']}" />
+                                </td>
+                            </tr>
+                            <tr id="th_address">
+                                <th id="th_address">Address</th>
+                                <td id="address">
+                                    <input type="text" name="address" class="px" value="{$result[0]['address']}" />
+                                </td>
+                            </tr>
+                            <tr id="td_birthcity">
+                                <th id="td_birthcity">Region</th>
+                                <td>
+                                    <p id="td_birthcity">
+                                        <select name="place" id="place" class="ps">
+                                            <option value="">-Province-</option>
+                                            <option did="1" value="Alberta" <!--{if $Jg=='Alberta'}-->selected="selected"<!--{/if}-->>Alberta</option>
+                                            <option did="2" value="British Columbia" <!--{if $Jg=='British Columbia'}-->selected="selected"<!--{/if}-->>British Columbia</option>
+                                            <option did="3" value="Manitoba" <!--{if $Jg=='Manitoba'}-->selected="selected"<!--{/if}-->>Manitoba</option>
+                                            <option did="4" value="New Brunswick" <!--{if $Jg=='New Brunswick'}-->selected="selected"<!--{/if}-->>New Brunswick</option>
+                                            <option did="5" value="Newfoundland" <!--{if $Jg=='Newfoundland'}-->selected="selected"<!--{/if}-->>Newfoundland</option>
+                                            <option did="6" value="Nova Scotia" <!--{if $Jg=='Nova Scotia'}-->selected="selected"<!--{/if}-->>Nova Scotia</option>
+                                            <option did="7" value="Ontario" <!--{if $Jg=='Ontario'}-->selected="selected"<!--{/if}-->>Ontario</option>
+                                            <option did="8" value="Prince Edward Island" <!--{if $Jg=='Prince Edward Island'}-->selected="selected"<!--{/if}-->>Prince Edward Island</option>
+                                            <option did="9" value="Quebec" <!--{if $Jg=='Quebec'}-->selected="selected"<!--{/if}-->>Quebec</option>
+                                            <option did="10" value="Saskatchewan" <!--{if $Jg=='Saskatchewan'}-->selected="selected"<!--{/if}-->>Saskatchewan</option>
+                                            <option did="11" value="Oversea" <!--{if $Jg=='Oversea'}-->selected="selected"<!--{/if}-->>Oversea</option>
+                                            <option did="12" value="Others" <!--{if $Jg=='Others'}-->selected="selected"<!--{/if}-->>Others</option>
+                                        </select>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Date of Registraion</th>
+                                <td>{$dateofregistraion}</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td>
+                                    <button type="submit" name="adminprofilesubmitbtn" id="adminprofilesubmitbtn" value="true" class="pn pnc" /><strong>Save</strong></button>
+                                    <input name="uid" type="hidden" value="{$uid}" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--LIST end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+

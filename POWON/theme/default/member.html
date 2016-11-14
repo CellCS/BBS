@@ -1,0 +1,361 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--CONTENT start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><!--{if $Mlist==0}-->All POWON Members<!--{else}-->My Friends<!--{/if}-->
+        </div>
+        <div class="z"></div>
+    </div>
+
+    <!--{if $Cat==0}-->
+    <!--{if $Mlist==0}-->
+    <div class="mn">
+    </div>
+    <div class="fl bm">
+        <div class="bm bmw  cl">
+            <div class="bm_h cl">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <h2><a>All POWON Members</a></h2>
+                    </th>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><h2>Order by<a href="member.php?mlist=0&cat=0"> default</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=0&cat=1"> age</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=0&cat=2"> profession</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=0&cat=3"> region</a></h2></td>
+                </table>
+            </div>
+            <div id="memberlist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <!--{loop $UserList $key $val}-->
+                    <!--{if $key%8==0 and $key!=0}--><tr> </tr><!--{/if}-->
+                    <td style="width:80px;height:100px;text-align: center;" >
+                        <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid={$val['uid']}"target="_blank">
+                            <!--{if !empty($chatmsg)}-->
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <!--{else}-->
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <!--{/if}--></a>
+                        <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                    </td>
+                    <!--{/loop}-->
+                    <?php
+                    for($i = 1;$i <= $UserListRest; $i++){
+                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--{elseif $Mlist==1}-->
+    <div class="mn">
+    </div>
+    <div class="fl bm">
+        <div class="bm bmw  cl">
+            <div class="bm_h cl">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <h2><a>My Friends</a></h2>
+                    </th>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><h2>Order by<a href="member.php?mlist=1&cat=0"> default</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=1&cat=1"> age</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=1&cat=2"> profession</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=1&cat=3"> region</a></h2></td>
+                    <!--{if !empty($FriendRequest)}-->
+                    <td><span class="pipe">|</span></td>
+                    <td class="common" style="text-align: right">
+                        <a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>
+                    </td>
+                    <!--{/if}-->
+                </table>
+            </div>
+            <div id="friendslist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <tr>
+                        <th><b><font color="#00008b">Normal Friends</font></b></th>
+                    </tr>
+                    <!--{loop $FriendList $key $val}-->
+                    <!--{if $key%8==0 and $key!=0}--><tr> </tr><!--{/if}-->
+                    <td style="width:80px;height:100px;text-align: center;" >
+                        <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid={$val['uid']}"target="_blank">
+                            <!--{if !empty($chatmsg)}-->
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <!--{else}-->
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <!--{/if}--></a>
+                        <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid={$val['uid']}">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
+                    </td>
+                    <!--{/loop}-->
+                    <!--{if !empty($FriendList)}-->
+                    <?php
+                    for($i = 1;$i <= $FriendListRest; $i++){
+                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
+                    }
+                    ?>
+                    <!--{/if}-->
+                    <tr>
+                        <th><b><font color="#00008b">My Family</font></b></th>
+                    </tr>
+                    <!--{loop $FamilyList $key $val}-->
+                    <!--{if $key%8==0 and $key!=0}--><tr> </tr><!--{/if}-->
+                    <td style="width:80px;height:100px;text-align: center;" >
+                        <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid={$val['uid']}">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
+                    </td>
+                    <!--{/loop}-->
+                    <!--{if !empty($FamilyList)}-->
+                    <?php
+                    for($i = 1;$i <= $FamilyListRest; $i++){
+                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
+                    }
+                    ?>
+                    <!--{/if}-->
+                    <tr>
+                        <th><b><font color="#00008b">My Colleagues</font></b></th>
+                    </tr>
+                    <!--{loop $ColleagueList $key $val}-->
+                    <!--{if $key%8==0 and $key!=0}--><tr> </tr><!--{/if}-->
+                    <td style="width:80px;height:100px;text-align: center;" >
+                        <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid={$val['uid']}">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
+                    </td>
+                    <!--{/loop}-->
+                    <!--{if !empty($ColleagueList)}-->
+                    <?php
+                    for($i = 1;$i <= $ColleagueListRest; $i++){
+                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
+                    }
+                    ?>
+                    <!--{/if}-->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--{/if}-->
+    <!--{elseif $Cat==1}-->
+    <div class="mn">
+    </div>
+    <div class="fl bm">
+        <div class="bm bmw  cl">
+            <div class="bm_h cl">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <h2><a><!--{if $Mlist==0}-->All POWON Members<!--{else}-->My Friends<!--{/if}--></a></h2>
+                    </th>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><h2>Order by<a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=0"> default</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=1"> age</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=2"> profession</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=3"> region</a></h2></td>
+                    <!--{if $Mlist==1}-->
+                    <!--{if !empty($FriendRequest)}-->
+                    <td><span class="pipe">|</span></td>
+                    <td class="common" style="text-align: right">
+                        <a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>
+                    </td>
+                    <!--{/if}-->
+                    <!--{/if}-->
+                </table>
+            </div>
+            <div id="memberlist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <?php
+                    $ageTmp='Unknown';
+                    $tdnum = 0;
+                                ?>
+                    <!--{loop $UserList $key $val}-->
+                    <!--{if age($val['birthday']) != $ageTmp}-->
+                    <tr>
+                        <th colspan="8"><b><font color="#00008b"><!--{if !empty($val['birthday'])}-->${age($val['birthday'])}<!--{else}-->Unknown<!--{/if}--></font></b></th>
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                    <!--{/if}-->
+                        <td style="width:80px;height:100px;text-align: center;" >
+                            <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                            <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        </td>
+                        <?php
+                            $tdnum+=1;
+                            $ageTmp = age($val['birthday']);
+                                ?>
+                        <!--{if $tdnum == 8}-->
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                        <!--{/if}-->
+                        <!--{/loop}-->
+                        <!--{if $tdnum != 8}-->
+                    </tr>
+                    <!--{/if}-->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--{elseif $Cat==2}-->
+    <div class="mn">
+</div>
+    <div class="fl bm">
+        <div class="bm bmw  cl">
+            <div class="bm_h cl">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <h2><a><!--{if $Mlist==0}-->All POWON Members<!--{else}-->My Friends<!--{/if}--></a></h2>
+                    </th>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><h2>Order by<a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=0"> default</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=1"> age</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=2"> profession</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=3"> region</a></h2></td>
+                    <!--{if $Mlist==1}-->
+                    <!--{if !empty($FriendRequest)}-->
+                    <td><span class="pipe">|</span></td>
+                    <td class="common" style="text-align: right">
+                        <a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>
+                    </td>
+                    <!--{/if}-->
+                    <!--{/if}-->
+                </table>
+            </div>
+            <div id="memberlist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <?php
+                    $proTmp='Unknown';
+                    $tdnum = 0;
+                                ?>
+                    <!--{loop $UserList $key $val}-->
+                    <!--{if strMagic($val['profession']) != $proTmp}-->
+                    <tr>
+                        <th colspan="8"><b><font color="#00008b"><!--{if !empty($val['profession'])}--> ${strMagic($val['profession'])}<!--{else}-->Unknown<!--{/if}--></font></b></th>
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                        <!--{/if}-->
+                        <td style="width:80px;height:100px;text-align: center;" >
+                            <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                            <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        </td>
+                        <?php
+                            $tdnum+=1;
+                            $proTmp = strMagic($val['profession']);
+                                ?>
+                        <!--{if $tdnum == 8}-->
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                        <!--{/if}-->
+                        <!--{/loop}-->
+                        <!--{if $tdnum != 8}-->
+                    </tr>
+                    <!--{/if}-->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--{elseif $Cat==3}-->
+    <div class="mn">
+    </div>
+    <div class="fl bm">
+        <div class="bm bmw  cl">
+            <div class="bm_h cl">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <h2><a><!--{if $Mlist==0}-->All POWON Members<!--{else}-->My Friends<!--{/if}--></a></h2>
+                    </th>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><h2>Order by<a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=0"> default</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=1"> age</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=2"> profession</a></h2></td>
+                    <td><span class="pipe">|</span></td>
+                    <td><h2><a href="member.php?mlist=<!--{if $Mlist==0}-->0<!--{else}-->1<!--{/if}-->&cat=3"> region</a></h2></td>
+                    <!--{if $Mlist==1}-->
+                    <!--{if !empty($FriendRequest)}-->
+                    <td><span class="pipe">|</span></td>
+                    <td class="common" style="text-align: right">
+                        <a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>
+                    </td>
+                    <!--{/if}-->
+                    <!--{/if}-->
+                </table>
+            </div>
+            <div id="memberlist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <?php
+                    $proTmp='Unknown';
+                    $tdnum = 0;
+                                ?>
+                    <!--{loop $UserList $key $val}-->
+                    <!--{if strMagic($val['region']) != $proTmp}-->
+                    <tr>
+                        <th colspan="8"><b><font color="#00008b"><!--{if !empty($val['region'])}--> {$val['region']}<!--{else}-->Unknown<!--{/if}--></font></b></th>
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                        <!--{/if}-->
+                        <td style="width:80px;height:100px;text-align: center;" >
+                            <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                            <h2><p><span class="xi2">{$val['username']}</span></p></h2>
+                        </td>
+                        <?php
+                            $tdnum+=1;
+                            $proTmp = strMagic($val['region']);
+                                ?>
+                        <!--{if $tdnum == 8}-->
+                    </tr>
+                    <tr>
+                        <?php $tdnum=0 ?>
+                        <!--{/if}-->
+                        <!--{/loop}-->
+                        <!--{if $tdnum != 8}-->
+                    </tr>
+                    <!--{/if}-->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--{/if}-->
+
+<!--CONTENT end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+

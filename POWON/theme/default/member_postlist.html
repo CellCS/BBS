@@ -1,0 +1,99 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--LIST start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><a href="member.php">Member</a><em>&raquo;</em><a href="member_home.php?uid={$uid}">{$uname} Post List</a>
+        </div>
+    </div>
+    <div class="boardnav">
+        <div id="ct" class="wp bm cl" style="margin-left:145px;">
+            <div id="sd_bdl" class="bdl" style="width:130px;margin-left:-145px">
+                <div class="tbn" id="forumleftside"><h2 class="bdl_h">Menue</h2>
+                    <dl class="a" id="lf_member">
+                        <dt><a href="javascript:;" title="Member">Member</a></dt>
+                        <dd>
+                            <a href="member_home.php?uid={$uid}" title="Information">Information</a>
+                        </dd>
+                        <dd class="bdl_a">
+                            <a href="member_home.php?uid={$uid}" title="Post List">Post List</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mn">
+
+                <div class="bm bml pbn">
+                    <div class="bm_h cl">
+                        <h1 class="xs2">
+                            <a href="member_home.php?uid={$uid}">${getUserName($uid)}</a>
+                            <span class="xs1 xw0 i">Today: <strong class="xi1">{$JCount}</strong><span class="pipe">|</span>Themes: <strong class="xi1">{$zCount}</strong></span></h1>
+                    </div>
+                </div>
+
+                <div id="pgt" class="bm bw0 pgs cl">
+                    <span class="pgb y"  ><a href="member.php?mlist=1">Back</a></span>
+                </div>
+
+                <div id="threadlist" class="tl bm bmw">
+                    <div class="th">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th colspan="2">
+                                    Title
+                                </th>
+                                <td class="by">Author</td>
+                                <td class="num">Reply    &nbsp;     View</td>
+                                <td class="by">Last Comment</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="bm_c">
+                        <form method="post" autocomplete="off" name="moderate" id="moderate" action="">
+                            <table summary="forum_2" id="forum_2" cellspacing="0" cellpadding="0">
+                                <!--{loop $ListContent $key $val}-->
+                                <tr>
+                                    <td class="icn">
+                                        <a href="member_post_detail.php?pid={$val['pid']}" title="<!--{if $val['addtime']>$newt}-->有新回复 - <!--{/if}-->新窗口打开" target="_blank"><img src="{$domain_resource}/images/folder_<!--{if $val['addtime']>$newt}-->new<!--{else}-->common<!--{/if}-->.gif" /></a>
+                                    </td>
+                                    <th class="<!--{if $val['addtime']>$newt}-->new<!--{else}-->common<!--{/if}-->">
+                                        <a href="member_post_detail.php?pid={$val['pid']}" class="xst">{$val['title']}</a>
+                                    </th>
+                                    <td class="by">
+                                        <cite>${getUserName($val['authorid'])}</cite>
+                                        <em><span class="xi1">${formatTime($val['addtime'])}</span></em>
+                                    </td>
+                                    <td class="num"><a href="member_post_detail.php?pid={$val['pid']}" class="xi2">{$val['replycount']}</a><em>{$val['hits']}</em></td>
+                                    <td class="by">
+                                        ${creatLast(getListUName($val['pid']))}
+                                    </td>
+                                </tr>
+                                <!--{/loop}-->
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bm bw0 pgs cl">
+                    <span  class="pgb y"><a href="member.php?mlist=1">Back</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--LIST end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+

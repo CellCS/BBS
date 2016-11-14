@@ -1,0 +1,78 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--LIST start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="Home">{$title}</a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Friend Requests
+        </div>
+    </div>
+    <div id="ct" class="ct2_a wp cl">
+        <div class="mn">
+            <div class="bm bw0">
+                <h1 class="mt">Friend Requests</h1>
+                <ul class="tb cl">
+                    <li class="a"><a href="home_friend.php">Friend Requests</a></li>
+                </ul>
+                <form action="home_friend.php" method="post" autocomplete="off">
+                    <table cellspacing="0" cellpadding="0" class="tfm">
+                        <!--{loop $Friend $key $val}-->
+                        <tr style="width:80px;height:100px">
+                            <td style="width:80px;height:100px;text-align: center;">
+                                <a href="member_home.php?uid={$val['uid']}"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                <h1 class="xs2"><a href="member_home.php?uid={$val['uid']}" class="xst" >{$val['username']}</a></h1>
+                            </td>
+                            <td style="vertical-align: middle;width: 100px;">
+                                <button type="submit" name="approvesubmitbtn" id="approvesubmitbtn" value="{$val['uid']}" style="background-color: #4CAF50; border: none;padding: 7px 16px;text-align: center;font-size:12px;margin: 4px 2px;border-radius: 8px;cursor: pointer;color:white;"><strong>Approve</strong></button>
+                            </td>
+                            <td td style="vertical-align: middle;font-size: medium;width: 20px;">
+                                as
+                            </td>
+                            <td id="friendRequest" td style="vertical-align: middle;width: 120px;">
+                                <select name="type_{$val['uid']}" id="type_{$val['uid']}" class="ps">
+                                    <option value="0" selected="selected">friend</option>
+                                    <option value="1">family</option>
+                                    <option value="2">colleague</option>
+                                </select>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <button type="submit" name="rejectsubmitbtn" id="rejectsubmitbtn" value="{$val['uid']}" style="background-color: #9f1b05; border: none;padding: 7px 16px;text-align: center;font-size:12px;margin: 4px 2px;border-radius: 8px;cursor: pointer;color:white;"><strong>Reject</strong></button>
+                            </td>
+                        </tr>
+                        <!--{/loop}-->
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <div class="appl">
+            <div class="tbn">
+                <h2 class="mt bbda">User Page</h2>
+                <ul>
+                    <li><a href="home_tx.php">Change Avatar</a></li>
+                    <li ><a href="home.php">Personal Info</a></li>
+                    <li class="a"><a href="home_friend.php">Friend Requests</a></li>
+                    <li><a href="home_postlist.php">Post List</a></li>
+                    <li><a href="home_membership.php">Membership</a></li>
+                    <li><a href="home_inviteToPOWON.php">Invite new member</a></li>
+                    <li ><a href="home_pass.php">Password/Email</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--LIST end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+
